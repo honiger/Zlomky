@@ -20,5 +20,28 @@ public class ZlomkyApp {
         System.out.printf("Zlomek d = %s\n", d);
         System.out.printf("Zlomek e = %s\n", e);
         System.out.printf("Zlomek f = %s\n", f);
+
+
+
+
+        Zlomek[] poleZlomku = new Zlomek[4];
+        poleZlomku[0] = a;
+        poleZlomku[1] = b;
+        poleZlomku[2] = c;
+        poleZlomku[3] = d;
+
+        Zlomek all = sumaZlomku(poleZlomku);
+        System.out.printf("Zlomek all = %s\n", all);
     }
+
+
+
+    public static Zlomek sumaZlomku (Zlomek[] poleZlomku){
+        Zlomek soucet = new Zlomek(0,1);
+        for (Zlomek z : poleZlomku){
+            soucet = soucet.plus(z);
+        }
+        return soucet.zkratit();
+    }
+
 }

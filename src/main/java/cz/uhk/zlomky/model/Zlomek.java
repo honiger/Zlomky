@@ -21,7 +21,7 @@ public class Zlomek {
     }
 
     public Zlomek deleno (Zlomek druhy){
-        return new Zlomek(citatel / druhy.citatel, jmenovatel / druhy.jmenovatel);
+        return new Zlomek(citatel / druhy.citatel, druhy.jmenovatel / jmenovatel);
     }
 
     public Zlomek plus (Zlomek druhy){
