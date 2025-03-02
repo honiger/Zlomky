@@ -51,7 +51,7 @@ public class Zlomek extends Number{
 
     @Override
     public String toString() {
-        return String.format("%d / %d" , citatel , jmenovatel);
+        return String.format("%d / %d", citatel, jmenovatel);
     }
 
     @Override
