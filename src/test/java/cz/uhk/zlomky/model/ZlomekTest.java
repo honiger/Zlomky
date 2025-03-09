@@ -11,7 +11,7 @@ class ZlomekTest {
         Zlomek b = new Zlomek(4,5);
         Zlomek c = a.krat(b);
         assertEquals(12, c.getCitatel(), "Chyba");
-        assertEquals(20, c.getjmenovatel(), "Chyba");
+        assertEquals(20, c.getJmenovatel(), "Chyba");
 
     }
 
@@ -21,7 +21,7 @@ class ZlomekTest {
         Zlomek b = new Zlomek(4,5);
         Zlomek c = a.krat(b);
         assertEquals(0, c.getCitatel(), "Chyba");
-        assertEquals(20, c.getjmenovatel(), "Chyba");
+        assertEquals(20, c.getJmenovatel(), "Chyba");
     }
 
     @Test
@@ -31,13 +31,21 @@ class ZlomekTest {
         Zlomek c = a.deleno(b);
 
         assertEquals(15, c.getCitatel(), "Chyba");
-        assertEquals(16, c.getjmenovatel(), "Chyba");
+        assertEquals(16, c.getJmenovatel(), "Chyba");
     }
 
     @Test
-    void deleniNulou() {
+    void deleniNulouCitatel() {
         Zlomek a = new Zlomek(3, 4);
         Zlomek b = new Zlomek(0, 5);
+
+        assertThrows(ArithmeticException.class, () -> a.deleno(b), "Mělo vyhodit výjimku!");
+    }
+
+    @Test
+    void deleniNulouJmenovatel() {
+        Zlomek a = new Zlomek(3, 4);
+        Zlomek b = new Zlomek(5, 0);
 
         assertThrows(ArithmeticException.class, () -> a.deleno(b), "Mělo vyhodit výjimku!");
     }
@@ -49,17 +57,27 @@ class ZlomekTest {
         Zlomek c = a.plus(b);
 
         assertEquals(31, c.getCitatel(), "Chyba");
-        assertEquals(20, c.getjmenovatel(), "Chyba");
+        assertEquals(20, c.getJmenovatel(), "Chyba");
     }
 
     @Test
-    void scitaniSNulou() {
+    void scitaniSNulouCitatel() {
         Zlomek a = new Zlomek(3, 4);
         Zlomek b = new Zlomek(0, 5);
         Zlomek c = a.plus(b);
 
         assertEquals(3, c.getCitatel(), "Chyba");
-        assertEquals(4, c.getjmenovatel(), "Chyba");
+        assertEquals(4, c.getJmenovatel(), "Chyba");
+    }
+
+    @Test
+    void scitaniSNulouJmenovatel() {
+        Zlomek a = new Zlomek(3, 4);
+        Zlomek b = new Zlomek(5, 0);
+        Zlomek c = a.plus(b);
+
+        assertEquals(3, c.getCitatel(), "Chyba");
+        assertEquals(4, c.getJmenovatel(), "Chyba");
     }
 
     @Test
@@ -69,18 +87,29 @@ class ZlomekTest {
         Zlomek c = a.minus(b);
 
         assertEquals(3*5 - 4*4, c.getCitatel(), "Chyba");
-        assertEquals(20, c.getjmenovatel(), "Chyba");
+        assertEquals(20, c.getJmenovatel(), "Chyba");
     }
 
     @Test
-    void odcitaniSNulou() {
+    void odcitaniSNulouCitatel() {
         Zlomek a = new Zlomek( 3, 4);
         Zlomek b = new Zlomek( 0, 5);
         Zlomek c = a.minus(b);
 
         assertEquals(3, c.getCitatel(), "Chyba");
-        assertEquals(4, c.getjmenovatel(), "Chyba");
+        assertEquals(4, c.getJmenovatel(), "Chyba");
     }
+
+    @Test
+    void odcitaniSNulouJmenovatel() {
+        Zlomek a = new Zlomek( 3, 4);
+        Zlomek b = new Zlomek( 5, 0);
+        Zlomek c = a.minus(b);
+
+        assertEquals(3, c.getCitatel(), "Chyba");
+        assertEquals(4, c.getJmenovatel(), "Chyba");
+    }
+
 
     @Test
     void zkratit() {
@@ -88,7 +117,7 @@ class ZlomekTest {
         Zlomek c = a.zkratit();
 
         assertEquals(2, c.getCitatel(), "Chyba");
-        assertEquals(3, c.getjmenovatel(), "Chyba");
+        assertEquals(3, c.getJmenovatel(), "Chyba");
     }
 
 
@@ -98,7 +127,7 @@ class ZlomekTest {
         Zlomek c = a.zkratit();
 
         assertEquals(3, c.getCitatel(), "Chyba");
-        assertEquals(4, c.getjmenovatel(), "Chyba");
+        assertEquals(4, c.getJmenovatel(), "Chyba");
     }
 
     @Test
@@ -107,6 +136,6 @@ class ZlomekTest {
         Zlomek c = a.zkratit();
 
         assertEquals(1, c.getCitatel(), "Chyba");
-        assertEquals(1, c.getjmenovatel(), "Chyba");
+        assertEquals(1, c.getJmenovatel(), "Chyba");
     }
 }

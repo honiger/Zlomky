@@ -12,7 +12,7 @@ public class Zlomek extends Number{
     public int getCitatel() {
         return citatel;
     }
-    public int getjmenovatel () {
+    public int getJmenovatel() {
         return jmenovatel;
     }
 
@@ -21,15 +21,33 @@ public class Zlomek extends Number{
     }
 
     public Zlomek deleno (Zlomek druhy){
-        return new Zlomek(citatel / druhy.citatel, druhy.jmenovatel / jmenovatel);
+        if (druhy.citatel == 0) {
+            throw new ArithmeticException("Dělení nulou není povoleno!");
+        }
+        else if (druhy.jmenovatel == 0) {
+            throw new ArithmeticException("Dělení nulou není povoleno!");
+        }
+        return new Zlomek(citatel * druhy.jmenovatel, jmenovatel * druhy.citatel);
     }
 
     public Zlomek plus (Zlomek druhy){
-        return new Zlomek(citatel * druhy.jmenovatel + druhy.citatel * jmenovatel,jmenovatel * druhy.jmenovatel);
+        if(citatel == 0 || jmenovatel == 0){
+            return new Zlomek(druhy.citatel ,druhy.jmenovatel);
+        }
+        else if(druhy.citatel == 0 || druhy.jmenovatel == 0){
+            return new Zlomek(citatel, jmenovatel);
+        }
+            return new Zlomek(citatel * druhy.jmenovatel + druhy.citatel * jmenovatel,jmenovatel * druhy.jmenovatel);
     }
 
     public Zlomek minus (Zlomek druhy){
-        return new Zlomek(citatel * druhy.jmenovatel - druhy.citatel * jmenovatel, jmenovatel * druhy.jmenovatel);
+        if(citatel == 0 || jmenovatel == 0){
+            return new Zlomek(druhy.citatel ,druhy.jmenovatel);
+        }
+        else if(druhy.citatel == 0 || druhy.jmenovatel == 0){
+            return new Zlomek(citatel, jmenovatel);
+        }
+        return new Zlomek(citatel * druhy.jmenovatel - druhy.citatel * jmenovatel,jmenovatel * druhy.jmenovatel);
     }
 
     public Zlomek zkratit (){

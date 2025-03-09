@@ -19,7 +19,7 @@ public class SeznamZlomku {
         return zlomky.get(index);
     }
 
-    public void vypisZlomeky(PrintStream out) {
+    public void vypisZlomky(PrintStream out) {
         for (int i = 0; i < zlomky.size(); i++) {
             out.printf("[%d] => %s\n", i + 1, zlomky.get(i));
         }
